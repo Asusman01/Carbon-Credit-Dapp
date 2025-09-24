@@ -1,242 +1,147 @@
-Carbon Credit Marketplace
-A decentralized platform for creating, auditing, buying, selling, and expiring carbon credits.
- The platform ensures transparency, accountability, and traceability using Flask (backend), React (frontend), Ethereum smart contracts, and Redis caching.
+## CARBON CREDIT MARKETPLACE
 
-Contents
- Project Overview
 
+This is a decentralized Carbon Credit Marketplace for managing, trading and auditing carbon credits with transparency and trust.
+Built with React.js (frontend) and the backend with Python, Flask (backend API) and Ethereum Smart Contracts deployed on ONINO Blockchain, 
+This project enables NGOs, Auditors and Buyers to interact in a secure and efficient carbon credit marketplace.
 
- Tech Stack (Frontend + Backend + Smart Contracts + Redis/DB)
+##  Features
+## Roles
 
+## NGOs
 
- Setup instructions (both frontend and backend)
+1. Create and submit carbon reduction projects.
 
+2. Upload supporting documents (PDFs).
 
- Running the project
+3. Request audits to verify carbon credits.
 
+## Auditors
 
- User roles (NGO, Buyer, Auditor)
+1. Review project submissions from NGOs.
 
+2. Approve or reject credits after verification.
 
- API Endpoints (brief)
+3. Earn audit fees for their service.
 
+## Buyers 
 
- Features implemented
+1. Purchase verified carbon credits from NGOs.
 
+2. Use blockchain-backed proof of carbon offset.
 
- Future improvements
+## Core Functionalities
 
+1. Tokenization of carbon credits using smart contracts.
 
+2. Audit process workflow with fees.
 
- Workflow & Features
- Authentication & Authorization (NGO, Buyer, Auditor roles)
+3. Secure transactions and record-keeping on Ethereum.
 
+4. Role-based dashboards (NGO, Auditor, Buyer).
 
- NGOs can:
+5. File upload & project documentation.
 
+## Tech Stack
 
-Create carbon credits tied to projects
+## Frontend
 
+** React.js (UI)
 
-Upload supporting PDF documentation (via Cloudinary)
+** TailwindCSS (styling)
 
+** Axios (API calls)
 
-Assign auditors for verification
+** Web3.js / Ethers.js (Ethereum interaction)
 
+## Backend
 
-Expire credits that are outdated or misused
+** Python + Flask
 
+** Postgres database
 
-Track credit transactions
+** JWT Authentication
 
 
- Buyers can:
+## Blockchain
 
+** Solidity Smart Contracts
 
-View available credits
+** Hardhat for development & testing
 
+** ONINO Blockchain  Testnet 
 
-Purchase credits using Ethereum
+## Installation & Setup
 
+1. Clone the repository
 
-Sell previously purchased credits
-
-
-Generate and download ownership certificates
-
-
- Auditors can:
-
-
-View assigned credits
-
-
-Verify and approve/reject credits
-
-
- Blockchain Integration (Smart Contract) for tokenized carbon credits
-
-
-Redis caching for speeding up transactions & audit requests
-
-
- JWT-based authentication for secure API access
-
-
-
-Architecture/ Tech Stack
-Frontend
-React (with Tailwind + ShadCN UI components)
-
-
-Axios for API calls
-
-
-//SweetAlert2 for alerts & confirmations
-
-
-Lucide-react + React Icons for icons
-
-
-Backend
-Flask (Python) with Blueprints for modular routing
-
-
-SQLAlchemy ORM with PostgreSQL
-
-
-Redis for caching requests & transactions
-
-
-Flask-JWT-Extended for authentication
-
-
-bcrypt for password hashing
-
-
-Smart Contracts
-Solidity (for Ethereum-based credits)
-
-
-Web3 / ethers.js integration in frontend
-
-
- Installation
-1. Clone the repo
-git clone https://github.com/your-username/carbon-credit-platform.git
-cd carbon-credit-platform
+git clone https://github.com/Asusman01/Carbon-Credit-Dapp.git
+cd Carbon-Credit-Dapp
 
 2. Backend Setup
 cd backend
-python -m venv venv
-source venv/bin/activate  
- # On Windows:
- venv\Scripts\activate
-pip install -r requirements.txt
-
-Set up .env file:
-
-
-SECRET_KEY=your-secret-key
-DATABASE_URL=sqlite:///carbon.db   # or Postgres/MySQL
-JWT_SECRET_KEY=your-jwt-secret
-REDIS_URL=redis://localhost:6379
-CLOUD_NAME=your-cloudinary-cloud-name
-
-Run Flask:
-
-
-flask run --host=0.0.0.0 --port=5000
-
-3. Frontend Setup
-cd client
 npm install
 
-Set up .env:
+
+Create .env file:
+
+PORT=5000
+postgres_URI=your-postgresdb-connection-string
+JWT_SECRET=your-secret
 
 
-REACT_APP_API_URL=http://localhost:5000/api
-REACT_APP_CLOUD_NAME=your-cloudinary-cloud-name
-
-Run React:
-
+Start backend:
 
 npm start
 
-
- Usage
-Visit http://localhost:3000 to access the app.
-
-
-Sign up as:
+3. Frontend Setup
+cd ../client
+npm install
+npm start
 
 
-NGO → create credits
+Frontend runs on: http://localhost:3000
+Backend runs on: http://localhost:5000
+
+4. Smart Contracts
+cd smartContracts
+npm install
+npx hardhat compile
+npx hardhat test
 
 
-Buyer → purchase credits
+Deploy contract to testnet:
+
+npx hardhat run scripts/deploy.js --network sepolia
 
 
-Auditor → verify credits
+Update frontend with deployed contract address & ABI.
+
+##  Usage
+
+Login / Signup as NGO, Auditor or Buyer.
+
+1. NGOs → Create project → Upload PDF → Request Audit.
+
+2. Auditors → Review project → Approve/Reject.
+
+3. Buyers → Purchase credits from verified NGOs.
 
 
 
-User Roles
-NGO Dashboard → manage projects, create credits, upload documents, expire credits
 
+## Security
 
-Buyer Dashboard → browse credits, purchase/sell, generate certificates
+JWT authentication for API access.
 
+Role-based access control.
 
-Auditor Dashboard → review & audit assigned credits
+All transactions recorded immutably on-chain.
 
+## Contributors
 
- API Endpoints (Backend)
-Auth
-POST /api/signup → register new user
+Asusman01
 
+## Licensecd
 
-POST /api/login → login user
-
-
-NGO
-POST /api/NGO/credits → create credit
-
-
-GET /api/NGO/credits → fetch NGO’s credits
-
-
-PATCH /api/NGO/credits/expire/:id → expire a credit
-
-
-GET /api/NGO/transactions → fetch transactions
-
-
-Buyer
-GET /api/buyer/credits → list all credits
-
-
-POST /api/buyer/purchase → buy a credit
-
-
-PATCH /api/buyer/sell → sell a credit
-
-
-GET /api/buyer/purchased → list purchased credits
-
-
-GET /api/buyer/generate-certificate/:id → generate certificate
-
-
-Auditor
-GET /api/auditor/credits → list assigned credits
-
-
-PATCH /api/auditor/audit/:creditId → audit a credit
-
-
- Future Improvements
-Oracle Integration for Verification: Chainlink, EVM-compatible with ONINO) pulls data from carbon registries like Verra or Gold Standard to verify credits automatically.
-ERC721 Tokenization: ERC721 NFTs makes each credit unique, tradable on external platforms (e.g., MEXC), and compatible with ONINO’s RWA tokenization tools.
-Compliance with KYC: Using ONINO’s Genesys Chain KYC ensures only verified users mint or trade credits, avoiding legal risks.
-
+This project is licensed under the MIT License.
