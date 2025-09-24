@@ -75,47 +75,47 @@ This project enables NGOs, Auditors and Buyers to interact in a secure and effic
 
 1. Clone the repository
 
-git clone https://github.com/Asusman01/Carbon-Credit-Dapp.git
-cd Carbon-Credit-Dapp
+** git clone https://github.com/Asusman01/Carbon-Credit-Dapp.git
+** cd Carbon-Credit-Dapp
 
 2. Backend Setup
-cd backend
-npm install
+**cd backend
+**npm install
 
 
 Create .env file:
 
-PORT=5000
-postgres_URI=your-postgresdb-connection-string
-JWT_SECRET=your-secret
+** PORT=5000
+** postgres_URI=your-postgresdb-connection-string
+** JWT_SECRET=your-secret
 
 
-Start backend:
+** Start backend:
 
 npm start
 
 3. Frontend Setup
-cd ../client
-npm install
-npm start
+** cd ../client
+**npm install
+**npm start
 
 
-Frontend runs on: http://localhost:3000
-Backend runs on: http://localhost:5000
+** Frontend runs on: http://localhost:3000
+** Backend runs on: http://localhost:5000
 
 4. Smart Contracts
-cd smartContracts
-npm install
-npx hardhat compile
-npx hardhat test
+** cd smartContracts
+** npm install
+** npx hardhat compile
+** npx hardhat test
 
 
-Deploy contract to testnet:
+** Deploy contract to testnet:
 
-npx hardhat run scripts/deploy.js --network sepolia
+** npx hardhat run scripts/deploy.js --network sepolia
 
 
-Update frontend with deployed contract address & ABI.
+** Update frontend with deployed contract address & ABI.
 
 ##  Usage
 
@@ -132,11 +132,11 @@ Login / Signup as NGO, Auditor or Buyer.
 
 ## Security
 
-JWT authentication for API access.
+** JWT authentication for API access.
 
-Role-based access control.
+** Role-based access control.
 
-All transactions recorded immutably on-chain.
+** All transactions recorded immutably on-chain.
 
 ## Contributors
 
